@@ -9,6 +9,7 @@ export default () => {
     authService.signOut();
     navigate("/");
   };
+
   return (
     <>
       <button onClick={onLogOutClick}>Log Out</button>
