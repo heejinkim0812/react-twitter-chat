@@ -6,9 +6,9 @@ import {
   onSnapshot,
   orderBy,
   query,
-  where,
 } from "firebase/firestore";
 import { dbService } from "fbase";
+import Tweet from "components/Tweet";
 
 const Home = ({ userObj }) => {
   const [tweet, setTweet] = useState("");
@@ -29,7 +29,7 @@ const Home = ({ userObj }) => {
   useEffect(() => {
     //getTweets();
 
-    // 2. onSnapshot을 쓰는방법 => 실시간, 적인 render
+    // 2. onSnapshot을 쓰는방법 => 실시간, 적은 render
     const q = query(collection(dbService, "tweets"), orderBy("createdAt"));
     onSnapshot(q, (querySnapshot) => {
       const tweetArray = querySnapshot.docs.map((document) => ({
@@ -49,10 +49,10 @@ const Home = ({ userObj }) => {
         createdAt: serverTimestamp(),
         creatorId: userObj.uid,
       });
-      setTweet("");
     } catch (error) {
       console.error("Error adding document: ", error);
     }
+    setTweet("");
   };
 
   const onChange = (event) => {
@@ -64,22 +64,24 @@ const Home = ({ userObj }) => {
   //console.log(tweets);
 
   return (
-    <div onSubmit={onSubmit}>
-      <form>
+    <div>
+      <form onSubmit={onSubmit}>
         <input
           value={tweet}
           onChange={onChange}
           type="text"
           placeholder="What is on your mind?"
           maxLength={120}
-        ></input>
+        />
         <input type="submit" value="Tweet" />
       </form>
       <div>
         {tweets.map((tweet) => (
-          <div key={tweet.id}>
-            <h4>{tweet.text}</h4>
-          </div>
+          <Tweet
+            key={tweet.id}
+            tweetObj={tweet}
+            isOwner={tweet.creatorId === userObj.uid}
+          />
         ))}
       </div>
     </div>
