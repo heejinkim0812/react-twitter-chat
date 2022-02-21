@@ -17,7 +17,8 @@ const Tweet = ({ tweetObj, isOwner }) => {
       //delete tweet
       await deleteDoc(TweetTextRef);
       //delete photo
-      await deleteObject(ref(storageService, tweetObj.attachmentUrl));
+      const urlRef = ref(storageService, tweetObj.attachmentUrl);
+      await deleteObject(urlRef);
     }
   };
 
@@ -32,6 +33,7 @@ const Tweet = ({ tweetObj, isOwner }) => {
     await updateDoc(TweetTextRef, {
       text: newTweet,
     });
+    console.log(`Edit tweet:${newTweet}`); //check
     setEditing(false);
   };
 

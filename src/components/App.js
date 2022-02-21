@@ -9,7 +9,7 @@ function App() {
   const [userObj, setUserObj] = useState(null);
 
   //
-  //========= USER IDENTIFICATION =========
+  //========= SET USER-INFO =========
   //
   useEffect(() => {
     const auth = getAuth();
@@ -17,9 +17,9 @@ function App() {
       if (user) {
         setIsLoggedIn(true);
         setUserObj({
-          displayName: authService.currentUser.displayName
-            ? authService.currentUser.displayName
-            : authService.currentUser.email.split("@")[0],
+          displayName: user.displayName
+            ? user.displayName
+            : user.email.split("@")[0],
           uid: user.uid,
           updateProfile: (args) =>
             updateProfile(user, { displayName: user.displayName }),
@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   //
-  //========= USEROBJ REFRESH =========
+  //========= USER-INFO REFRESH (EDIT PROFILE) =========
   //
   const refreshUser = () => {
     const user = authService.currentUser;

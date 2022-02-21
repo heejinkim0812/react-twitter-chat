@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateProfile } from "@firebase/auth";
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  orderBy,
-} from "@firebase/firestore";
-import { authService, dbService } from "fbase";
+import { authService } from "fbase";
 
 const Profile = ({ refreshUser, userObj }) => {
   const navigate = useNavigate();
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
 
   //
-  //============= LOGOUT =============
+  //================ LOGOUT ================
   //
 
   const onLogOutClick = () => {
@@ -45,7 +38,7 @@ const Profile = ({ refreshUser, userObj }) => {
   };
 
   //
-  //============= RETURN =============
+  //================= RETURN =================
   //
   return (
     <>
