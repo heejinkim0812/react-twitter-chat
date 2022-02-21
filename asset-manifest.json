@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/react-twitter-chat/static/js/main.f975015a.js",
+    "index.html": "/react-twitter-chat/index.html",
+    "main.f975015a.js.map": "/react-twitter-chat/static/js/main.f975015a.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.f975015a.js"
+  ]
+}
