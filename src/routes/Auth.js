@@ -15,6 +15,9 @@ const Auth = () => {
   const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState("");
 
+  //
+  //========= JOIN or LOGIN ==========
+  //
   const onChange = (event) => {
     const {
       target: { name, value },
@@ -38,7 +41,6 @@ const Auth = () => {
         // log in
         data = await signInWithEmailAndPassword(auth, email, password);
       }
-      console.log(data);
     } catch (error) {
       setError(error.message);
     }
@@ -48,6 +50,9 @@ const Auth = () => {
     setNewAccount((prev) => !prev);
   };
 
+  //
+  //========= SOCIAL JOIN ==========
+  //
   const onSocialClick = async (event) => {
     const {
       target: { name },
@@ -61,6 +66,9 @@ const Auth = () => {
     await signInWithPopup(authService, provider);
   };
 
+  //
+  //=========== RETURN =============
+  //
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -102,4 +110,5 @@ const Auth = () => {
     </div>
   );
 };
+
 export default Auth;

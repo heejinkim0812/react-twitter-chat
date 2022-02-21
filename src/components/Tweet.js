@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { dbService, storageService } from "fbase";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "@firebase/storage";
+import { dbService, storageService } from "fbase";
 
 const Tweet = ({ tweetObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
   const [newTweet, setNewTweet] = useState(tweetObj.text);
   const TweetTextRef = doc(dbService, "tweets", `${tweetObj.id}`);
 
+  //
+  //============ DELETE TWEET =============
+  //
   const onDeleteClick = async () => {
     const ok = window.confirm("Are you sure you want to delete this tweet");
     if (ok) {
@@ -18,6 +21,9 @@ const Tweet = ({ tweetObj, isOwner }) => {
     }
   };
 
+  //
+  //============ EDIT TWEET =============
+  //
   const toggleEditing = async () => setEditing((prev) => !prev);
 
   const onSubmit = async (event) => {
@@ -36,6 +42,9 @@ const Tweet = ({ tweetObj, isOwner }) => {
     setNewTweet(value);
   };
 
+  //
+  //============ RETURN =============
+  //
   return (
     <div>
       {editing ? (
@@ -69,4 +78,5 @@ const Tweet = ({ tweetObj, isOwner }) => {
     </div>
   );
 };
+
 export default Tweet;

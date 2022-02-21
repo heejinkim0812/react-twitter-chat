@@ -9,15 +9,19 @@ import {
   query,
 } from "firebase/firestore";
 import { ref, uploadString, getDownloadURL } from "@firebase/storage";
-import { dbService, storageService } from "fbase";
 import Tweet from "components/Tweet";
+import { dbService, storageService } from "fbase";
 
 const Home = ({ userObj }) => {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
   const [attachment, setAttachment] = useState("");
 
-  // 1. forEach를 쓰는방법 => render가 많아서 좋지않은 방법
+  //
+  //============= GET TWEETS =============
+  //
+
+  // 1. forEach를 쓰는방법 => render가 많아서 좋지않음
   // const getTweets = async () => {
   //   const dbTweets = await getDocs(query(collection(dbService, "tweets")));
   //   dbTweets.forEach((documnet) => {
@@ -43,6 +47,10 @@ const Home = ({ userObj }) => {
     });
   }, []);
 
+  //
+  //============= UPLOAD TWEET =============
+  //
+
   const onSubmit = async (event) => {
     event.preventDefault();
     let attachmentUrl = "";
@@ -56,6 +64,7 @@ const Home = ({ userObj }) => {
       );
       attachmentUrl = await getDownloadURL(uploadFile.ref);
     }
+
     const tweetObj = {
       text: tweet,
       createdAt: serverTimestamp(),
@@ -63,7 +72,7 @@ const Home = ({ userObj }) => {
       attachmentUrl,
     };
 
-    console.log(`Submit tweet:${tweet}`); //cosole check
+    console.log(`Submit tweet:${tweet}`); //check
     await addDoc(collection(dbService, "tweets"), tweetObj);
 
     //초기화
@@ -77,7 +86,10 @@ const Home = ({ userObj }) => {
     } = event;
     setTweet(value);
   };
-  //console.log(tweets);
+
+  //
+  //============= UPLOAD IMG =============
+  //
 
   const onFileChange = (event) => {
     const {
@@ -97,6 +109,10 @@ const Home = ({ userObj }) => {
   const onClearAttachment = () => {
     setAttachment("");
   };
+
+  //
+  //=============== RETURN ===============
+  //
 
   return (
     <div>
