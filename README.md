@@ -1,7 +1,18 @@
 # React-Twitter-Chat
 
-Simple Chat Web App
-Used **React**, **Firebase**, **CSS**
+Simple Chat Web App Using **React**, **Firebase**, **CSS**
+
+> 구현하는 기능
+>
+> - Email, Google, Github, Social Authentication
+> - Tweet CRUD
+> - Protected Pages
+> - Profile Page
+> - File Upload
+> - Deploy
+> - API Key Security
+
+</br>
 
 ![SharedScreenshot](https://user-images.githubusercontent.com/71063574/155284117-1fd94e3d-f501-45cb-9921-84e31b9c58d0.jpg)
 
