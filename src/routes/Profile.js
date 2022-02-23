@@ -37,7 +37,7 @@ const Profile = ({ refreshUser, userObj }) => {
         displayName: newDisplayName,
       });
       refreshUser();
-      const ok = window.confirm(`Nickname Changed to ${newDisplayName} 💥`);
+      const ok = window.confirm(`Nickname Changed!`);
     }
   };
 
