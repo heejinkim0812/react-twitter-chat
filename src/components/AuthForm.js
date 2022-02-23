@@ -5,8 +5,6 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-const inputStyles = {};
-
 const AuthForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,7 +51,7 @@ const AuthForm = () => {
   //
   return (
     <>
-      <div>
+      <>
         <form onSubmit={onSubmit} className="container">
           <input
             name="email"
@@ -84,7 +82,7 @@ const AuthForm = () => {
         <span onClick={toggleAccount} className="authSwitch">
           {newAccount ? "Sign In" : "Create Account"}
         </span>
-      </div>
+      </>
     </>
   );
 };

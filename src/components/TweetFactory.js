@@ -69,6 +69,9 @@ const TweetFactory = ({ userObj }) => {
       setAttachment(result);
     };
     reader.readAsDataURL(theFile);
+    //cache삭제
+    const file = document.getElementById("attach-file");
+    file.value = "";
   };
 
   const onClearAttachment = () => {
@@ -84,6 +87,7 @@ const TweetFactory = ({ userObj }) => {
         <input
           className="factoryInput__input"
           value={tweet}
+          required
           onChange={onChange}
           type="text"
           placeholder="What is on your mind?"
@@ -91,11 +95,11 @@ const TweetFactory = ({ userObj }) => {
         />
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
       </div>
+
       <label htmlFor="attach-file" className="factoryInput__label">
         <span>Add photos</span>
         <FontAwesomeIcon icon={faPlus} />
       </label>
-
       <input
         id="attach-file"
         type="file"

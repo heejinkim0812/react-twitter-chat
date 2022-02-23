@@ -224,7 +224,7 @@ form {
 .authContainer {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 70vh;
   justify-content: center;
   align-items: center;
 }
@@ -265,7 +265,7 @@ form {
   text-align: center;
   background: #04aaff;
   color: white;
-  margin-top: 10px;
+  margin-top: 10;
   cursor: pointer;
 }
 

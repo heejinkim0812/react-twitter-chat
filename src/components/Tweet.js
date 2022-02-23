@@ -17,7 +17,7 @@ const Tweet = ({ tweetObj, isOwner }) => {
     const ok = window.confirm("Are you sure you want to delete this tweet");
     if (ok) {
       //delete tweet
-      await deleteDoc(TweetTextRef);
+      await deleteDoc(doc(dbService, "tweets", `${tweetObj.id}`));
       //delete photo
       const urlRef = ref(storageService, tweetObj.attachmentUrl);
       await deleteObject(urlRef);
