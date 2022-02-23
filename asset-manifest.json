@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/react-twitter-chat/static/js/main.f975015a.js",
+    "main.css": "/react-twitter-chat/static/css/main.6c4c041b.css",
+    "main.js": "/react-twitter-chat/static/js/main.0e2bdccb.js",
     "index.html": "/react-twitter-chat/index.html",
-    "main.f975015a.js.map": "/react-twitter-chat/static/js/main.f975015a.js.map"
+    "main.6c4c041b.css.map": "/react-twitter-chat/static/css/main.6c4c041b.css.map",
+    "main.0e2bdccb.js.map": "/react-twitter-chat/static/js/main.0e2bdccb.js.map"
   },
   "entrypoints": [
-    "static/js/main.f975015a.js"
+    "static/css/main.6c4c041b.css",
+    "static/js/main.0e2bdccb.js"
   ]
 }
